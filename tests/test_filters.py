@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 
-from ocear.filters import normalize
+from ocear.filters import normalize, flatten
 
 
 def test_normalize(img):
@@ -12,3 +12,10 @@ def test_normalize(img):
     assert np.max(normalized_img) <= 1.0
     assert np.min(normalized_img) >= 0.0
     assert img.shape == normalized_img.shape
+
+
+def test_flatten(img):
+    flattened_img = flatten(img)
+    assert np.max(flattened_img) <= 1.0
+    assert np.min(flattened_img) >= 0.0
+    assert img.shape == flattened_img.shape
