@@ -1,5 +1,4 @@
 import pytest
-import numpy as np
 import imageio
 
 from ocear import io
