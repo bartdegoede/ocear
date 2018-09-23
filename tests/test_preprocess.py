@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 
-from ocear.preprocess import normalize, flatten, skew
+from ocear.preprocess import normalize, flatten, skew, utils
 
 
 def test_normalize(img):

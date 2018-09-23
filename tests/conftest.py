@@ -5,4 +5,4 @@ from ocear import io
 
 @pytest.fixture
 def img():
-    return io.load_image('tests/fixtures/example1.jpg')
+    return io.load_image('tests/fixtures/example.jpg')

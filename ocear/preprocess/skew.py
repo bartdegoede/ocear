@@ -1,6 +1,8 @@
 import numpy as np
 from scipy.ndimage import interpolation
 
+from ocear.preprocess.utils import clip_borders
+
 MAX_SKEW = 3
 SKEW_STEPS = 32
 
@@ -24,13 +26,10 @@ def skew(image):
     """
     Rotate image by an estimated skew.
     """
-    height, width = image.shape
-    # ignore 10% of border for skew estimation; maybe make configurable
-    _h, _w = int(0.1 * height), int(0.1 * width)
     # increase contrast for better skew estimation
     img = np.amax(image) - image
     img = img - np.amin(img)
     # estimate skew angle
-    angle = _skew_angle(img[_h : height - _h, _w : width - _w])
+    angle = _skew_angle(clip_borders(img))
     img = interpolation.rotate(img, angle, reshape=False)
     return np.amax(img) - img
