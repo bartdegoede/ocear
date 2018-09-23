@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 
-from ocear.filters import normalize, flatten
+from ocear.preprocess import normalize, flatten, skew
 
 
 def test_normalize(img):
@@ -19,3 +19,8 @@ def test_flatten(img):
     assert np.max(flattened_img) <= 1.0
     assert np.min(flattened_img) >= 0.0
     assert img.shape == flattened_img.shape
+
+
+def test_skew(img):
+    skewed_img = skew(img)
+    assert img.shape == skewed_img.shape
