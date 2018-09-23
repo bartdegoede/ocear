@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 
-from ocear.preprocess import normalize, flatten, skew, utils
+from ocear.preprocess import normalize, flatten, skew, binarize, utils
 
 
 def test_normalize(img):
@@ -24,3 +24,10 @@ def test_flatten(img):
 def test_skew(img):
     skewed_img = skew(img)
     assert img.shape == skewed_img.shape
+
+
+def test_binarize(img):
+    binarized_img = binarize(img)
+    assert img.shape == binarized_img.shape
+    # all values in the image have to be either 0 or 1
+    assert (np.equal(binarized_img, 0) | np.equal(binarized_img, 1)).all()
