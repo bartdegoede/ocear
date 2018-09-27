@@ -16,7 +16,8 @@ def _skew_angle(image):
     estimates = []
     for angle in np.linspace(-MAX_SKEW, MAX_SKEW, SKEW_STEPS + 1):
         variance = np.mean(
-            interpolation.rotate(image, angle, order=0, mode='constant'), axis=1
+            interpolation.rotate(image, angle, order=0, mode='constant'),
+            axis=1
         ).var()
         estimates.append((variance, angle))
     return max(estimates)[1]

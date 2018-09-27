@@ -11,6 +11,6 @@ install:
   - pip install -r requirements.txt
   - pip install pytest-cov
 script:
-  - pytest --cov=ocear tests
+  - pytest --cov-report xml:coverage.xml --cov=ocear tests
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT --coverage-input-type coverage.py
